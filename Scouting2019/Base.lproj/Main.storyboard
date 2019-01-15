@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,6 +16,13 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vve-FW-B8W">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -40,10 +46,17 @@
         <!--Design Questions-->
         <scene sceneID="JCx-mQ-sti">
             <objects>
-                <viewController id="Wrn-HP-H2o" customClass="ViewController" customModule="Scouting2019" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wrn-HP-H2o" customClass="QuestionViewController" customModule="Scouting2019" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lBp-Ry-pG1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2zu-9R-mAJ" customClass="questionTableView" customModule="Scouting2019" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="W2j-Et-4AC"/>
                     </view>
@@ -51,13 +64,13 @@
                     <navigationItem key="navigationItem" title="Design Questions" id="bMj-zc-zqe">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="grV-qF-872">
                             <connections>
-                                <action selector="changeToMain:" destination="Wrn-HP-H2o" id="yi2-p0-tad"/>
+                                <action selector="changeToMain:" destination="Wrn-HP-H2o" id="ypP-3q-9dX"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Add" id="B8T-p2-10Y">
                                 <connections>
-                                    <action selector="addNewDesign:" destination="Wrn-HP-H2o" id="57g-1F-pU6"/>
+                                    <action selector="addElement:" destination="Wrn-HP-H2o" id="hug-XQ-6fi"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Save" id="ZDG-GX-Zzj">
@@ -70,11 +83,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <segue destination="iRR-Su-8RX" kind="presentation" identifier="toMainSegue" animates="NO" id="m8O-N4-ItE"/>
+                        <segue destination="0Jn-od-caS" kind="presentation" identifier="toQuestionSelector" animates="NO" id="bea-fm-LXb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04i-Kt-3yy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="842.42878560719646"/>
+            <point key="canvasLocation" x="304.80000000000001" y="841.52923538230891"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G8P-Nq-K8b">
@@ -92,7 +106,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjc-H2-BVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="306" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vq9-Yy-VqE">
@@ -110,7 +124,104 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vv4-L8-QFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="842.42878560719646"/>
+            <point key="canvasLocation" x="1836" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sIA-FS-sPQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Jn-od-caS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dmF-Hw-0mp">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xzV-o2-30D" kind="relationship" relationship="rootViewController" id="cvY-aM-MZ4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oya-RR-2kM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="842"/>
+        </scene>
+        <!--Question Selector-->
+        <scene sceneID="3Ja-fr-cF9">
+            <objects>
+                <viewController title="Question Selector" id="xzV-o2-30D" customClass="AddQuestionViewController" customModule="Scouting2019" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="34i-MX-YTY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Question Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vl1-S4-6PG">
+                                <rect key="frame" x="16" y="75" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UY5-vD-CtX">
+                                <rect key="frame" x="16" y="115" width="343" height="125"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="Cxp-wT-dfm"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Question" id="rRO-Ur-E9K">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="nCa-Gd-0dB">
+                            <connections>
+                                <action selector="backToDesign:" destination="xzV-o2-30D" id="Lkc-5v-KKb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="nzX-OR-duR">
+                            <connections>
+                                <action selector="doneQuestion:" destination="xzV-o2-30D" id="RfV-zb-9mq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="questionName" destination="vl1-S4-6PG" id="SPD-AU-a97"/>
+                        <outlet property="questionPicker" destination="UY5-vD-CtX" id="bw0-OT-olb"/>
+                        <segue destination="TjA-IA-1gi" kind="presentation" identifier="backToDesign" animates="NO" id="xmV-Wf-9Di"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h4u-UT-o7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1836" y="841.52923538230891"/>
+        </scene>
+        <!--Button Question Element-->
+        <scene sceneID="14a-7Y-luo">
+            <objects>
+                <viewController id="1HA-Gh-tj8" customClass="ButtonQuestionElement" customModule="Scouting2019" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eSt-ut-hsL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E0-hk-o0q">
+                                <rect key="frame" x="0.0" y="0.0" width="286" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fb7-qW-i9C">
+                                <rect key="frame" x="294" y="-1" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="ButtonElementLabel" destination="7E0-hk-o0q" id="NT9-oV-hmt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X5S-KW-UcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2508" y="764.6176911544228"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xmV-Wf-9Di"/>
+    </inferredMetricsTieBreakers>
 </document>

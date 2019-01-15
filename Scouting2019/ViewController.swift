@@ -10,22 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var elementTable: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
+
+    // LER Scouting scene design button
     @IBAction func changeToDesign(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toDesignSegue", sender: self)
     }
-    
-    @IBAction func changeToMain(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "toMainSegue", sender: self)
-    }
-    
-    @IBAction func saveDesign(_ sender: UIBarButtonItem) {
-    }
 }
-

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD3D12FF21E7E9240099C3FC /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D12FE21E7E9240099C3FC /* QuestionViewController.swift */; };
+		DD3D130321E7F97A0099C3FC /* AddQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D130221E7F97A0099C3FC /* AddQuestionViewController.swift */; };
 		DDF4FD4121A5F5A900DEABD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4FD4021A5F5A900DEABD1 /* AppDelegate.swift */; };
 		DDF4FD4321A5F5A900DEABD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4FD4221A5F5A900DEABD1 /* ViewController.swift */; };
 		DDF4FD4621A5F5A900DEABD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF4FD4421A5F5A900DEABD1 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD3D12FE21E7E9240099C3FC /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		DD3D130221E7F97A0099C3FC /* AddQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionViewController.swift; sourceTree = "<group>"; };
 		DDF4FD3D21A5F5A900DEABD1 /* Scouting2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scouting2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF4FD4021A5F5A900DEABD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDF4FD4221A5F5A900DEABD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 				DDF4FD4721A5F5AA00DEABD1 /* Assets.xcassets */,
 				DDF4FD4921A5F5AA00DEABD1 /* LaunchScreen.storyboard */,
 				DDF4FD4C21A5F5AA00DEABD1 /* Info.plist */,
+				DD3D12FE21E7E9240099C3FC /* QuestionViewController.swift */,
+				DD3D130221E7F97A0099C3FC /* AddQuestionViewController.swift */,
 			);
 			path = Scouting2019;
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 			files = (
 				DDF4FD4321A5F5A900DEABD1 /* ViewController.swift in Sources */,
 				DDF4FD4121A5F5A900DEABD1 /* AppDelegate.swift in Sources */,
+				DD3D130321E7F97A0099C3FC /* AddQuestionViewController.swift in Sources */,
+				DD3D12FF21E7E9240099C3FC /* QuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82M9H72VZB;
 				INFOPLIST_FILE = Scouting2019/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +312,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82M9H72VZB;
 				INFOPLIST_FILE = Scouting2019/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
