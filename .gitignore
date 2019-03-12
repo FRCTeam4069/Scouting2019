@@ -1,0 +1,6 @@
+# Pods
+Pods/
+# OSX 
+.DS_Store
+# Private
+GoogleService-Info.plist

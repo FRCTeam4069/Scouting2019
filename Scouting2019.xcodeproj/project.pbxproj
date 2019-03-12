@@ -10,7 +10,6 @@
 		0C09E2462C3E68324DE21D01 /* Pods_Scouting2019.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E03BADE061C188E266B3E04 /* Pods_Scouting2019.framework */; };
 		DD3D12FF21E7E9240099C3FC /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D12FE21E7E9240099C3FC /* QuestionViewController.swift */; };
 		DD8F8BEA221206B300801843 /* QuestionElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F8BE9221206B300801843 /* QuestionElements.swift */; };
-		DDB1E0012229A04A00F54996 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDB1E0002229A04A00F54996 /* GoogleService-Info.plist */; };
 		DDF4FD4121A5F5A900DEABD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4FD4021A5F5A900DEABD1 /* AppDelegate.swift */; };
 		DDF4FD4321A5F5A900DEABD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4FD4221A5F5A900DEABD1 /* ViewController.swift */; };
 		DDF4FD4621A5F5A900DEABD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF4FD4421A5F5A900DEABD1 /* Main.storyboard */; };
@@ -23,7 +22,6 @@
 		5C74C7253CF41C049D4EB37C /* Pods-Scouting2019.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scouting2019.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scouting2019/Pods-Scouting2019.release.xcconfig"; sourceTree = "<group>"; };
 		DD3D12FE21E7E9240099C3FC /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		DD8F8BE9221206B300801843 /* QuestionElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionElements.swift; sourceTree = "<group>"; };
-		DDB1E0002229A04A00F54996 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDF4FD3D21A5F5A900DEABD1 /* Scouting2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scouting2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF4FD4021A5F5A900DEABD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDF4FD4221A5F5A900DEABD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 		DDF4FD3F21A5F5A900DEABD1 /* Scouting2019 */ = {
 			isa = PBXGroup;
 			children = (
-				DDB1E0002229A04A00F54996 /* GoogleService-Info.plist */,
 				DDF4FD4021A5F5A900DEABD1 /* AppDelegate.swift */,
 				DDF4FD4221A5F5A900DEABD1 /* ViewController.swift */,
 				DDF4FD4421A5F5A900DEABD1 /* Main.storyboard */,
@@ -158,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDF4FD4B21A5F5AA00DEABD1 /* LaunchScreen.storyboard in Resources */,
-				DDB1E0012229A04A00F54996 /* GoogleService-Info.plist in Resources */,
 				DDF4FD4821A5F5AA00DEABD1 /* Assets.xcassets in Resources */,
 				DDF4FD4621A5F5A900DEABD1 /* Main.storyboard in Resources */,
 			);
