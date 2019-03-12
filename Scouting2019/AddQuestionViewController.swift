@@ -1,11 +1,3 @@
-//
-//  AddQuestionViewController.swift
-//  Scouting2019
-//
-//  Created by Aidan Zerwer on 2019-01-10.
-//  Copyright © 2019 4069. All rights reserved.
-//
-
 import UIKit
 
 class AddQuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -13,7 +5,8 @@ class AddQuestionViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var questionPicker: UIPickerView!
     @IBOutlet weak var questionName: UITextField!
     
-    let questionList = ["Large Text Box", "Slider", "Small Text Box", "Switch", "Stepper"]
+    let documentInteractionController = UIDocumentInteractionController()
+    let questionList = ["Large Text Box", "Slider", "Small Text Box", "Switch", "Stepper", "Line Break"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
