@@ -14,29 +14,46 @@ class Responses {
 }
 var responses = Responses()
 
-
-// Label cell class
-class LabelCell: UITableViewCell {
-    @IBOutlet weak var title: UILabel!
+protocol CellTemplate {
+    func reset()
 }
 
+// Label cell class
+class LabelCell: UITableViewCell, CellTemplate {
+    @IBOutlet weak var title: UILabel!
+}
+extension CellTemplate where Self: LabelCell {func reset() {}}
+
 // Switch cell class
-class SwitchCell: UITableViewCell {
+class SwitchCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var elementSwitch: UISwitch!
     @IBAction func switchValueChanged(_ sender: Any) {
         responses.responseDict[title.text!] = elementSwitch.isOn
     }
 }
+extension CellTemplate where Self: SwitchCell {
+    func reset() {
+        elementSwitch.setOn(false, animated: false)
+        responses.responseDict[title.text!] = elementSwitch.isOn
+    }
+}
 
 // Blank cell class
-class BlankCell: UITableViewCell {}
+class BlankCell: UITableViewCell, CellTemplate {}
+extension CellTemplate where Self: BlankCell {func reset(){}}
 
 // Small text cell class
-class SmallTextCell: UITableViewCell {
+class SmallTextCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var smallTextField: UITextField!
     @IBAction func textEditingDidEnd(_ sender: Any) {
+        responses.responseDict[title.text!] = smallTextField.text
+    }
+}
+extension CellTemplate where Self: SmallTextCell {
+    func reset() {
+        smallTextField.text = ""
         responses.responseDict[title.text!] = smallTextField.text
     }
 }
@@ -44,7 +61,7 @@ class SmallTextCell: UITableViewCell {
 // Large text cell class
 // Load called as init for border and delegate
 // Delegate used to call when editing changed
-class LargeTextCell: UITableViewCell, UITextViewDelegate {
+class LargeTextCell: UITableViewCell, UITextViewDelegate, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var largeTextField: UITextView!
     
@@ -57,12 +74,17 @@ class LargeTextCell: UITableViewCell, UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         responses.responseDict[title.text!] = largeTextField.text
     }
-    
+}
+extension CellTemplate where Self: LargeTextCell {
+    func reset() {
+        largeTextField.text = ""
+        responses.responseDict[title.text!] = largeTextField.text
+    }
 }
 
 // Stepper cell class
 // Stepper label updated when value change to display value
-class StepperCell: UITableViewCell {
+class StepperCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var stepperValueLabel: UILabel!
@@ -72,10 +94,16 @@ class StepperCell: UITableViewCell {
         responses.responseDict[title.text!] = String(Int(stepper.value))
     }
 }
+extension CellTemplate where Self: StepperCell {
+    func reset() {
+        stepper.value = 0
+        responses.responseDict[title.text!] = String(Int(stepper.value))
+    }
+}
 
 // Number cell class
 // Same as small text cell but uses a number keyboard
-class NumberCell: UITableViewCell {
+class NumberCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var numberField: UITextField!
     
@@ -83,45 +111,90 @@ class NumberCell: UITableViewCell {
         responses.responseDict[title.text!] = numberField.text
     }
 }
+extension CellTemplate where Self: NumberCell {
+    func reset() {
+        numberField.text = ""
+        responses.responseDict[title.text!] = numberField.text
+    }
+}
 
 // Segment cell with two segments class
-class DoubleSegmentCell: UITableViewCell {
+class DoubleSegmentCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var doubleSegment: UISegmentedControl!
     @IBAction func segmentValueChanged(_ sender: Any) {
         responses.responseDict[title.text!] = doubleSegment.titleForSegment(at: doubleSegment.selectedSegmentIndex)
     }
 }
+extension CellTemplate where Self: DoubleSegmentCell {
+    func reset() {
+        doubleSegment.selectedSegmentIndex = 0
+        responses.responseDict[title.text!] = doubleSegment.titleForSegment(at: doubleSegment.selectedSegmentIndex)
+    }
+}
 
 // Segment cell with three segments class
-class TripleSegmentCell: UITableViewCell {
+class TripleSegmentCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var tripleSegment: UISegmentedControl!
     @IBAction func segmentValueChanged(_ sender: Any) {
         responses.responseDict[title.text!] = tripleSegment.titleForSegment(at: tripleSegment.selectedSegmentIndex)
     }
 }
+extension CellTemplate where Self: TripleSegmentCell {
+    func reset() {
+        tripleSegment.selectedSegmentIndex = 0
+        responses.responseDict[title.text!] = tripleSegment.titleForSegment(at: tripleSegment.selectedSegmentIndex)
+    }
+}
 
 // Segment cell with four segments class
-class QuadrupleSegmentCell: UITableViewCell {
+class QuadrupleSegmentCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var quadrupleSegment: UISegmentedControl!
     @IBAction func segmentValueChanged(_ sender: Any) {
         responses.responseDict[title.text!] = quadrupleSegment.titleForSegment(at: quadrupleSegment.selectedSegmentIndex)
     }
 }
+extension CellTemplate where Self: QuadrupleSegmentCell {
+    func reset() {
+        quadrupleSegment.selectedSegmentIndex = 0
+        responses.responseDict[title.text!] = quadrupleSegment.titleForSegment(at: quadrupleSegment.selectedSegmentIndex)
+    }
+}
+
+class QuintupleSegmentCell: UITableViewCell, CellTemplate {
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var quintupleSegment: UISegmentedControl!
+    
+    @IBAction func segmentValueChanged(_ sender: Any) {
+        responses.responseDict[title.text!] = quintupleSegment.titleForSegment(at: quintupleSegment.selectedSegmentIndex)
+    }
+}
+extension CellTemplate where Self: QuintupleSegmentCell {
+    func reset() {
+        quintupleSegment.selectedSegmentIndex = 0
+        responses.responseDict[title.text!] = quintupleSegment.titleForSegment(at: quintupleSegment.selectedSegmentIndex)
+    }
+}
 
 // Slider cell class
-class SliderCell: UITableViewCell {
+class SliderCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBAction func sliderValueChanged(_ sender: Any) {
         responses.responseDict[title.text!] = String(Int(slider.value))
     }
 }
+extension CellTemplate where Self: SliderCell {
+    func reset() {
+        slider.value = 0
+        responses.responseDict[title.text!] = String(Int(slider.value))
+    }
+}
 
 // Drawing cell class
-class DrawingCell: UITableViewCell {
+class DrawingCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView! // Image used as the background
     @IBOutlet weak var currentLine: UIImageView! // Image used to store current line
@@ -129,7 +202,7 @@ class DrawingCell: UITableViewCell {
     
     var backgroundImg: UIImage! // Used to store background in event of clear
     var lastPoint = CGPoint.zero // Last point stored for drawing line
-    var color = UIColor.black
+    var color = UIColor.green
     var brushWidth: CGFloat = 5.0
     var opacity: CGFloat = 1.0
     var swiped = false
@@ -199,17 +272,26 @@ class DrawingCell: UITableViewCell {
         responses.responseDict[title.text!] = backgroundImage.image?.jpegData(compressionQuality: 0.5)?.base64EncodedString()
     }
 }
+extension CellTemplate where Self: DrawingCell {
+    func reset() {
+        backgroundImage.image = backgroundImg
+        currentLine.image = backgroundImg
+        responses.responseDict[title.text!] = ""
+    }
+}
 
 // Image cell class
-class ImageCell: UITableViewCell {
+class ImageCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var displayedImage: UIImageView!
     @IBOutlet weak var title: UILabel!
 }
+extension CellTemplate where Self: ImageCell {func reset(){}}
 
 // Smaller label cell (sub title cell) class
-class SubTitleCell: UITableViewCell {
+class SubTitleCell: UITableViewCell, CellTemplate {
     @IBOutlet weak var title: UILabel!
 }
+extension CellTemplate where Self: SubTitleCell {func reset(){}}
 
 // Function used to take NSDictionary of a cells data and convert to UITableViewCell
 func cellConfig(cellData: NSDictionary, cellTable: UITableView) -> UITableViewCell {
@@ -258,6 +340,7 @@ func cellConfig(cellData: NSDictionary, cellTable: UITableView) -> UITableViewCe
     else if cellType == "numberCell" {
         let cell = cellTable.dequeueReusableCell(withIdentifier: "numberCell") as! NumberCell
         cell.title?.text = cellName
+    
         responses.responseDict.updateValue(cell.numberField.text!, forKey: cell.title.text!)
         return cell
     }
@@ -288,6 +371,17 @@ func cellConfig(cellData: NSDictionary, cellTable: UITableView) -> UITableViewCe
         responses.responseDict.updateValue(cell.quadrupleSegment.titleForSegment(at: cell.quadrupleSegment.selectedSegmentIndex)!, forKey: cell.title.text!)
         return cell
     }
+    else if cellType == "quintupleSegmentCell" {
+        let cell = cellTable.dequeueReusableCell(withIdentifier: "quintupleSegmentCell") as! QuintupleSegmentCell
+        cell.title?.text = cellName
+        cell.quintupleSegment.setTitle(cellData["SegmentNameOne"] as? String, forSegmentAt: 0)
+        cell.quintupleSegment.setTitle(cellData["SegmentNameTwo"] as? String, forSegmentAt: 1)
+        cell.quintupleSegment.setTitle(cellData["SegmentNameThree"] as? String, forSegmentAt: 2)
+        cell.quintupleSegment.setTitle(cellData["SegmentNameFour"] as? String, forSegmentAt: 3)
+        cell.quintupleSegment.setTitle(cellData["SegmentNameFive"] as? String, forSegmentAt: 4)
+        responses.responseDict.updateValue(cell.quintupleSegment.titleForSegment(at: cell.quintupleSegment.selectedSegmentIndex)!, forKey: cell.title.text!)
+        return cell
+    }
     else if cellType == "sliderCell" {
         let cell = cellTable.dequeueReusableCell(withIdentifier: "sliderCell") as! SliderCell
         cell.title?.text = cellName
@@ -307,7 +401,7 @@ func cellConfig(cellData: NSDictionary, cellTable: UITableView) -> UITableViewCe
         let imageData = Data(base64Encoded: cellData["BackgroundImage"] as! String)
         cell.backgroundImage.image = UIImage(data: imageData!)
         cell.currentLine.image = UIImage(data: imageData!)
-        cell.backgroundImg = UIImage(data: imageData!)
+        cell.backgroundImg = cell.backgroundImage.image // Do this for scaling
         cell.title?.text = cellName
         responses.responseDict[cell.title.text!] = cellData["BackgroundImage"]
         return cell
@@ -321,3 +415,4 @@ func cellConfig(cellData: NSDictionary, cellTable: UITableView) -> UITableViewCe
     }
     return cellTable.dequeueReusableCell(withIdentifier: "blankCell") as! BlankCell
 }
+

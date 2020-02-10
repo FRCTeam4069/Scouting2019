@@ -3,7 +3,7 @@ import Firebase
 import FirebaseFirestore
 
 class ViewController: UITableViewController {
-    
+
     let defaults = UserDefaults.standard; // Defaults used to save selected form
     var cells = [String]() // Array of cell names
     var db: Firestore!
@@ -19,7 +19,6 @@ class ViewController: UITableViewController {
         // Setup database
         Firestore.firestore().settings = FirestoreSettings()
         db = Firestore.firestore()
-        
         // Initial load
         reloadForms()
     }
@@ -63,9 +62,14 @@ class ViewController: UITableViewController {
 class ButtonCell: UITableViewCell {
     @IBOutlet weak var button: UIButton!
     
+    let formViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "formView") as! UINavigationController
+
+    
     @IBAction func buttonAction(_ sender: Any) {
         // Defaults save selected form
         UserDefaults.standard.set(button.currentTitle!, forKey: "selectedForm")
+        
+        self.window?.rootViewController?.present(formViewController, animated: true, completion: nil)
     }
 }
 

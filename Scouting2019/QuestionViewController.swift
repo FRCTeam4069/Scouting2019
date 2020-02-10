@@ -25,19 +25,27 @@ class DesignTableView: UITableViewController {
         responses.responseDict.updateValue(formatter.string(from: Date()), forKey: "Timestamp")
         // Add response
         db.collection("response").addDocument(data: responses.responseDict)
-        
+        loadDatabase()
         // Perform Segue
-        performSegue(withIdentifier: "toMainMenu", sender: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        self.hideKeyboardWhenTappedAround() // Init hidden keyboard
+    @IBAction func exitButton(_ sender: Any) {
+        loadDatabase()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func loadDatabase() {
+        let count = self.cells.count
+        self.cells.removeAll()
+        self.cellData = NSArray()
+        self.cellTable.deleteRows(at: (0..<count).map { i in IndexPath(row: i, section: 0) }, with: .automatic)
+
+        self.cellTable.reloadData()
+        
         // Init firestore
         Firestore.firestore().settings = FirestoreSettings()
         db = Firestore.firestore()
-        // Init formName from default saved selected form
-        formName = UserDefaults.standard.string(forKey: "selectedForm")!
-        navigationBar.title = formName
         
         // Asynchronous query for selected form in "forms" collection
         self.db.collection("forms").getDocuments() { (querySnapshot, err) in
@@ -57,13 +65,24 @@ class DesignTableView: UITableViewController {
                 
                 // Create UITableViewCell from cellConfig function for each cell in cellData
                 for cell in self.cellData {
-                    self.cells.append(cellConfig(cellData: cell as! NSDictionary, cellTable: self.cellTable))
+                    let x = cellConfig(cellData: cell as! NSDictionary, cellTable: self.cellTable)
+                    (x as! CellTemplate).reset()
+                    self.cells.append(x)
                 }
                 
                 // Reload table
                 self.cellTable.reloadData()
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        self.hideKeyboardWhenTappedAround() // Init hidden keyboard
+
+        // Init formName from default saved selected form
+        formName = UserDefaults.standard.string(forKey: "selectedForm")!
+        navigationBar.title = formName
+        loadDatabase()
     }
     
     // Uses size of cells array of UITableViewCells
